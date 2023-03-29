@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController; // untuk mendaftarkan user controler
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//untuk mendftrkan link website
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('register', [UserController::class, 'register'])->name('register');
+Route::post('register', [UserController::class, 'register_action'])->name('register.action');
+Route::get('login', [UserController::class, 'login'])->name('login');
+Route::post('login', [UserController::class, 'login_action'])->name('login.action');
+Route::get('password', [UserController::class, 'password'])->name('password');
+Route::post('password', [UserController::class, 'password_action'])->name('password.action');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(
+    function () {
+        Route::get('/', function () {
+        return view('home', ['title' => 'Home']);
+    })->name('home');
+    Route::get('password', [UserController::class, 'password'])->name('password');
+    Route::post('password', [UserController::class, 'password_action'])->name('password.action');
+    Route::get('logout', [UserController::class, 'logout'])->name('logout');
 });
