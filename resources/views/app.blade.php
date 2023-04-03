@@ -9,7 +9,7 @@
   <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
+    <a class="navbar-brand" href="#">Lar-Alfi</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,14 +18,17 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
         </li>
+        @if(auth()->user()->position==1)
         <li class="nav-item">
           <a class="nav-link" href="{{ route('login') }}">Login</a>
         </li>
-        @if(auth()->user()->position==0)
         <li class="nav-item">
         <a class="nav-link" href="{{ route('register') }}">Register</a>
         </li>
         @endif
+        <li class="nav-item">
+        <a class="nav-link" href="{{ route('positions.index') }}">Position</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
