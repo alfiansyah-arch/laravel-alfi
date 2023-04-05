@@ -1,12 +1,18 @@
 @extends('app')
 @section('content')
+@if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+
 <div class="text-end mb-2">
                     <a class="btn btn-success" href="{{ route('positions.create') }}">Add Position</a>
                 </div>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">No.</th>
       <th scope="col">Name</th>
       <th scope="col">Keterangan</th>
       <th scope="col">Alias</th>
@@ -16,7 +22,8 @@
   <tbody>
   @foreach ($positions as $val)
                     <tr>
-                        <td>{{ $val->id }}</td>
+                      <?php $i = 1; ?>
+                        <td>{{ $i++ }}</td>
                         <td>{{ $val->name }}</td>
                         <td>{{ $val->keterangan }}</td>
                         <td>{{ $val->alias }}</td>

@@ -42,16 +42,20 @@ class PositionController extends Controller
     /**
     * Show the form for editing the specified resource.
     */
-    public function edit(Position $positions)
+        public function edit(Position $position)
     {
         $title = 'Edit Data Position';
-        return view('positions.edit',compact('positions', compact('title')));
+        return view('positions.edit',compact('position' , 'title'));
     }
 
     /**
     * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\company  $company
+    * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, positions $positions)
+    public function update(Request $request, Position $position)
     {
         $request->validate([
             'name' => 'required',
@@ -59,7 +63,7 @@ class PositionController extends Controller
             'alias' => 'required',
         ]);
         
-        $positions->fill($request->post())->save();
+        $position->fill($request->post())->save();
 
         return redirect()->route('positions.index')->with('success','Position Has Been updated successfully');
     }
@@ -67,9 +71,9 @@ class PositionController extends Controller
     /**
     * Remove the specified resource from storage.
     */
-    public function destroy(Position $positions)
+    public function destroy(Position $position)
     {
-        $positions->delete();
+        $position->delete();
         return redirect()->route('positions.index')->with('success','Position has been deleted successfully');
     }
 }
