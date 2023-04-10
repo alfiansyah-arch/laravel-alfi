@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+<div class="login">
 <div class="row">
     <div class="col-md-6">
         @if(session('success'))
@@ -13,21 +14,20 @@
         <form action="{{ route('login.action') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label>Email <span class="text-danger">*</span></label>
-                <input class="form-control" type="email" name="email" value="{{ old('email') }}" />
+                <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Email"/>
             </div>
             <div class="mb-3">
-                <label>Password <span class="text-danger">*</span></label>
-                <input class="form-control" type="password" name="password" />
+                <input class="form-control" type="password" name="password" placeholder="Password"/>
             </div>
             <div class="mb-3">
                 <button class="btn btn-primary">Login</button>
-                <a class="btn btn-danger" href="{{ route('home') }}">Back</a>
+                <!-- <a class="btn btn-danger" href="{{ route('home') }}">Back</a> -->
             </div>
             <div class="mb-3">
                 <p>Tidak punya akun ? Buat akun sekarang <a href="{{ route('register') }}">Register<a></p>
             </div>
         </form>
     </div>
+</div>
 </div>
 @endsection

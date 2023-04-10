@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; // untuk mendaftarkan user controler
-use App\Http\Controllers\PositionController; // untuk mendaftarkan user controler
+use App\Http\Controllers\PositionController; // untuk mendaftarkan position controler
+use App\Http\Controllers\DepartmentController; // untuk mendaftarkan department controler
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,6 @@ Route::middleware('auth')->group(
     Route::post('password', [UserController::class, 'password_action'])->name('password.action');
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
     Route::resource('positions', PositionController::class);
+    Route::resource('departements', DepartmentController::class);
      
 });

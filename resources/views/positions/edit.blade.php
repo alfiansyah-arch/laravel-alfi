@@ -25,7 +25,12 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
                   <strong>Alias:</strong>
-                  <input type="text" name="alias" class="form-control" value="{{ $position->alias }}" placeholder="Contoh : 'Office Boy', 'Owner'">
+                  <select name="alias">
+                    <option value="{{ $position->alias }}">{{ $position->alias }}</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Karyawan">Karyawan</option>
+                    <option value="Magang">Magang</option>
+                  </select>
                   @error('alias')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                   @enderror

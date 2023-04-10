@@ -12,19 +12,16 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->integer('position');
-            $table->integer('department');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-    }
+ {
+ Schema::create('departments', function (Blueprint $table) {
+ $table->id();
+ $table->string('name');
+ $table->string('location');
+ $table->integer('manager_id');
+ $table->timestamps();
+ });
+ }
+
 
     /**
      * Reverse the migrations.
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('departements');
     }
 };

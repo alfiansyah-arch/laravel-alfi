@@ -29,4 +29,5 @@
     </tr>
   </tbody>
 </table>
+<a class="btn btn-warning" href="{{ route('login') }}">Logout</a>
 @endsection

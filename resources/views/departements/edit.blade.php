@@ -1,12 +1,13 @@
 @extends('app')
 @section('content')
-  <form action="{{ route('positions.store') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('departements.update', $departement->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
                   <strong>Name:</strong>
-                  <input type="text" name="name" class="form-control" placeholder="Nama Lengkap">
+                  <input type="text" name="name" class="form-control" value="{{ $departement->name }}" placeholder="Nama Lengkap">
                   @error('name')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                   @enderror
@@ -14,23 +15,21 @@
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                  <strong>Keterangan:</strong>
-                  <input type="text" name="keterangan" class="form-control" placeholder="Keterangan Posisi">
-                  @error('keterangan')
+                  <strong>Location:</strong>
+                  <input type="text" name="location" class="form-control" value="{{ $departement->location }}" placeholder="Keterangan Posisi">
+                  @error('location')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                   @enderror
               </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                  <strong>Alias:</strong>
-                  <select name="alias">
-                    <option value="-">--select--</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Karyawan">Karyawan</option>
-                    <option value="Magang">Magang</option>
+                  <strong>Manager ID:</strong>
+                  <select name="manager_id">
+                  <?php $i = 1; ?>
+                    <option value="{{ $i++ }}">User</option>
                   </select>
-                  @error('alias')
+                  @error('manager_id')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                   @enderror
               </div>
