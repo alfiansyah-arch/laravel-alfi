@@ -29,10 +29,10 @@
                         <td>{{ $val->alias }}</td>
                         <td>
                             <form action="{{ route('positions.destroy',$val->id) }}" method="Post">
-                                <a class="btn btn-primary" href="{{ route('positions.edit',$val->id) }}">Edit</a>
+                                <a class="btn btn-warning" href="{{ route('positions.edit',$val->id) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-primary">Delete</button>
                             </form>
                         </td>
                     </tr>

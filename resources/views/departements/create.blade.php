@@ -24,7 +24,7 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
                   <strong>Manager ID:</strong>
-                  <select name="manager_id">
+                  <select name="manager_id" class="form-control">
                   @foreach ($managers as $manager)
                     <option value="{{ $manager->id }}">{{$manager->name}}</option>
                     @endforeach

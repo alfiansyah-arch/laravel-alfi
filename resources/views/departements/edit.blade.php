@@ -25,9 +25,10 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
                   <strong>Manager ID:</strong>
-                  <select name="manager_id">
-                  <?php $i = 1; ?>
-                    <option value="{{ $i++ }}">User</option>
+                  <select name="manager_id" class="form-control">
+                  @foreach ($managers as $manager)
+                    <option value="{{ $manager->id }}">{{$manager->name}}</option>
+                    @endforeach
                   </select>
                   @error('manager_id')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>

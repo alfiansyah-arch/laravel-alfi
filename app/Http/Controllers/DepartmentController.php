@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Department;
-use App\Models\Position;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -17,7 +17,7 @@ class DepartmentController extends Controller
     public function create()
     {
         $title = 'Add Petugas Jumat';
-        $managers = Position::where('alias','Manager')->get();
+        $managers = User::where('position','Manager')->get();
         return view('departements.create', compact('managers','title'));
     }
 
@@ -46,7 +46,7 @@ class DepartmentController extends Controller
         public function edit(Department $departement)
     {
         $title = 'Edit Petugas Jumat';
-        $managers = Position::where('alias','Manager')->get();
+        $managers = User::where('position','Manager')->get();
         return view('departements.edit',compact('departement' ,'managers', 'title'));
     }
 
