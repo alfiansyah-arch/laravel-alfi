@@ -17,7 +17,7 @@ class DepartmentController extends Controller
     public function create()
     {
         $title = 'Add Petugas Jumat';
-        $managers = User::where('position','Manager')->get();
+        $managers = User::where('position','1')->get();
         return view('departements.create', compact('managers','title'));
     }
 
@@ -46,7 +46,7 @@ class DepartmentController extends Controller
         public function edit(Department $departement)
     {
         $title = 'Edit Petugas Jumat';
-        $managers = User::where('position','Manager')->get();
+        $managers = User::where('position','1')->get();
         return view('departements.edit',compact('departement' ,'managers', 'title'));
     }
 

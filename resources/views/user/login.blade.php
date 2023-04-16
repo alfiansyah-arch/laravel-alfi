@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <div class="login">
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-6">
         @if(session('success'))
         <p class="alert alert-success">{{ session('success') }}</p>

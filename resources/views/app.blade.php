@@ -46,7 +46,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="#" class="navbar-brand mx-4 mb-3">
+                <a href="{{route('home')}}" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>T A T A P</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0">@yield('name')</h6>
-                        <span>Admin</span>
+                        <span>{{ auth()->user()->name }}</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -73,7 +73,7 @@
                     @endif -->
                 </div>
                 <div class="navbar-nav w-100">
-                <a class="btn btn-warning" href="{{ route('login') }}">Logout</a>
+                <a class="btn btn-warning" onclick="myFunction()">Logout</a>
                 </div>
             </nav>
         </div>
@@ -161,7 +161,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex">{{ auth()->user()->name }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
@@ -227,5 +227,34 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 </body>
+<script language="javascript">
+function myFunction() {
+  if (confirm("Anda yakin ingin logout?") == true) {
+    // Hapus session yang tersimpan (jika ada)
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    sessionStorage.clear();
+    // Redirect ke halaman login
+    window.location.replace("login");
+  } else {
+    // Batalkan aksi logout
+    return false;
+  }
+}
 
+// Cegah pengguna untuk menavigasi kembali ke halaman utama setelah logout
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.href);
+}
+</script>
+<script>
+  function sendEmail() {
+    const emailInput = document.getElementById("email");
+    const email = emailInput.value;
+    const messageInput = document.getElementById("message");
+    const message = messageInput.value;
+    const emailUrl = `mailto:${email}?subject=Pesan dari Website&body=${message}`;
+    window.location.href = emailUrl;
+  }
+</script>
 </html>

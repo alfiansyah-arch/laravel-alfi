@@ -34,15 +34,17 @@
 </head>
 
 <body>
-<div class="container">
-      <div class="item">
-      <div class="card">
-        <div class="card-body">
-        <h1 class="card-title" style="color: white">@yield('title', $title)</h1>
-            @yield('content')
+<div class="container-fluid">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">@yield('title', $title)</h1>
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-      </div>
     </div>
 
     <!-- JavaScript Libraries -->
