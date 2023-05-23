@@ -35,23 +35,14 @@ class DepartmentController extends Controller
         return redirect()->route('departements.index')->with('success','Department has been created successfully.');
     }
 
-    public function exportPdf()
+    public function exportpdf()
     {
         $title = 'Laporan Data Departement';
         $departements = Department::orderBy('id','Asc')->get();
         $pdf = PDF::loadview('departements.pdf', compact('departements', 'title'));
-        return $pdf->download('laporan_departement');
+        return $pdf->Download('laporan_departement.pdf');
     }
 
-    public function show(Department $departements)
-    {
-        $title = 'Show';
-        return view('departements.show',compact('departements', 'title'));
-    }
-
-    /**
-    * Show the form for editing the specified resource.
-    */
         public function edit(Department $departement)
     {
         $title = 'Edit Petugas Jumat';
@@ -59,13 +50,6 @@ class DepartmentController extends Controller
         return view('departements.edit',compact('departement' ,'managers', 'title'));
     }
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  \App\company  $company
-    * @return \Illuminate\Http\Response
-    */
     public function update(Request $request, Department $departement)
     {
         $request->validate([

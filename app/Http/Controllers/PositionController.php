@@ -32,16 +32,7 @@ class PositionController extends Controller
 
         return redirect()->route('positions.index')->with('success','Position has been created successfully.');
     }
-
-    public function show(Position $positions)
-    {
-        $title = 'Show';
-        return view('positions.show',compact('positions', compact('title')));
-    }
-
-    /**
-    * Show the form for editing the specified resource.
-    */
+    
         public function edit(Position $position)
     {
         $title = 'Edit Data Position';
