@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Departements extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -14,6 +14,6 @@ class Department extends Model
         'manager_id'
     ];
     public function manager(){
-        return $this->belongsTo(User::class, 'manager_id');
+        return $this->belongsTo(User::class, 'manager_id', 'id');
     }
 }
