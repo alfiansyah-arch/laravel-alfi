@@ -1,4 +1,7 @@
-<?php use App\Models\User; ?>
+<?php 
+use App\Models\User; 
+use App\Models\Position;
+?>
 @extends('app')
 @section('content')
 @if(session('success'))
@@ -8,8 +11,8 @@
 </div>
 @endif
 <div class="text-end mb-2">
-  <a class="btn btn-info" href="{{ route('exportPdfDepartement') }}">Print</a>
-  <a class="btn btn-success" href="{{ route('departements.create') }}"> Create Departement</a>
+  <a class="btn btn-info" href="{{ route('exportpdf')}}">Print</a>
+  <!-- <a class="btn btn-success" href="{{ route('departements.create') }}"> Create Departement</a> -->
 </div>
 
 <table id="example" class="table table-striped" style="width:100%">
@@ -17,25 +20,31 @@
     <tr>
       <th scope="col">No</th>
       <th scope="col">Nama</th>
-      <th scope="col">Location</th>
-      <th scope="col">Id Manager</th>
+      <th scope="col">Email</th>
+      <th scope="col">Position</th>
+      <th scope="col">Department</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     @php $no = 1 @endphp
-    @foreach ($departements as $val)
+    @foreach ($user as $val)
     <tr>
       <td>{{ $no ++ }}</td>
       <td>{{ $val->name }}</td>
-      <td>{{ $val->location }}</td>
+      <td>{{ $val->email }}</td>
       <td>
-    @if($val->manager)
-      {{ $val->manager->name }}
+      @if ($val->position == 1)
+    Manager
+  @elseif ($val->position == 2)
+    Karyawan
+    @elseif ($val->position == 3)
+    Magang
     @else
-      Tidak ada manager
-    @endif
+    Tidak Masuk Position
+  @endif
   </td>
+  <td>{{ $val->department }}</td>
       <td>
         <form action="{{ route('departements.destroy',$val->id) }}" method="Post">
           <a class="btn btn-primary" href="{{ route('departements.edit',$val->id) }}">Edit</a>

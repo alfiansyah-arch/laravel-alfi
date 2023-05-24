@@ -32,8 +32,16 @@ Route::middleware('auth')->group(
     Route::get('password', [UserController::class, 'password'])->name('password');
     Route::post('password', [UserController::class, 'password_action'])->name('password.action');
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
     Route::resource('positions', PositionController::class);
+    Route::get('position/export-excel', [PositionController::class, 'exportExcel'])->name('exportExcel');
+
     Route::resource('departements', DepartementController::class);
-    Route::get('departement/export-pdf', [DepartementController::class, 'exportPdf'])->name('exportPdf');
-     
+    Route::resource('user', UserController::class);
+    Route::get('departement/export-pdf', [DepartementController::class, 'exportPdf'])->name('exportPdfDepartement');
+    Route::get('users/exportpdf', [UserController::class, 'exportPDF'])->name('exportpdf'); 
+
+    Route::get('register', [UserController::class, 'register2'])->name('register');
+    Route::post('register', [UserController::class, 'register_action2'])->name('register.action');
+
 });

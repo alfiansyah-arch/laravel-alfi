@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use App\Exports\ExportPositions;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PositionController extends Controller
 {
@@ -12,6 +14,11 @@ class PositionController extends Controller
         $title = 'Data Position';
         $positions = Position::orderBy('id','Asc')->paginate(5);
         return view('positions.index', compact('positions', 'title'));
+    }
+
+    public function show(Position $position)
+    {
+        return view('Positions.show', compact('position'));
     }
 
     public function create()
@@ -67,4 +74,9 @@ class PositionController extends Controller
         $position->delete();
         return redirect()->route('positions.index')->with('success','Position has been deleted successfully');
     }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new ExportPositions, 'positions.xlsx');
+    }   
 }

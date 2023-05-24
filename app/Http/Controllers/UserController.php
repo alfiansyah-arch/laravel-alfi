@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\User;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +34,31 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('login')->with('success', 'Registration success. Please login!');
+    }
+
+    public function register2()
+    {
+        $data['title'] = 'Register';
+        return view('user/create', $data);
+    }
+
+    public function register_action2(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'password_confirm' => 'required|same:password',
+        ]);
+
+        $user = new User([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->save();
+
+        return redirect()->route('user.index')->with('success', 'Registration success. Please login!');
     }
 
 
@@ -82,5 +109,27 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function index()
+    {
+        $title = 'Data User';
+        $user = User::orderBy('id','Asc')->get();
+        $managers = User::where('position','1')->get();
+        $position = Position::where('alias','Manager')->get();
+        return view('user.index', compact('user','managers','position', 'title'));
+    }
+
+    public function show(User $user)
+    {
+        return view('user.show', compact('user'));
+    }
+
+    public function exportpdf()
+    {
+        $title = 'Laporan Data User';
+        $user = User::orderBy('id','Asc')->get();
+        $pdf = PDF::loadview('user.pdf', compact('user', 'title'));
+        return $pdf->stream('laporan-user.pdf');
     }
 }

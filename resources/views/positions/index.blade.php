@@ -7,6 +7,7 @@
         @endif
 
 <div class="text-end mb-2">
+                    <a class="btn btn-success" href="{{ route('exportExcel') }}">Export Excel</a>
                     <a class="btn btn-success" href="{{ route('positions.create') }}">Add Position</a>
                 </div>
 <table id="example" class="table table-striped" style="width:100%">

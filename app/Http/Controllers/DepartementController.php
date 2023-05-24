@@ -82,6 +82,6 @@ class DepartementController extends Controller
         $departements = Departements::orderBy('id','Asc')->get();
         $managers = User::where('position','1')->get();
         $pdf = PDF::loadview('departements.pdf', compact('departements','managers', 'title'));
-        return $pdf->download('laporan-departement.pdf');
+        return $pdf->stream('laporan-departement.pdf');
     }
 }

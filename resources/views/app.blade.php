@@ -66,6 +66,7 @@
                     <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
                     <a class="nav-link" href="{{ route('positions.index') }}">Position</a>
                     <a class="nav-link" href="{{ route('departements.index') }}">Departments</a>
+                    <a class="nav-link" href="{{ route('user.index') }}">User</a>
                     <!-- @if(auth()->user()->position==1)
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('login') }}">Login</a>
