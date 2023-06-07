@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; // untuk mendaftarkan user controler
 use App\Http\Controllers\PositionController; // untuk mendaftarkan position controler
 use App\Http\Controllers\DepartementController; // untuk mendaftarkan department controler
+use App\Http\Controllers\PetugasJumatController; // untuk mendaftarkan petugas jumat controler
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,7 @@ Route::middleware('auth')->group(
     Route::get('register', [UserController::class, 'register2'])->name('register');
     Route::post('register', [UserController::class, 'register_action2'])->name('register.action');
 
+    Route::resource('petugasjumat', PetugasJumatController::class);
+
+    Route::get('search/masjid', [MasjidController::class, 'autocomplete'])->name('search.masjid');
 });

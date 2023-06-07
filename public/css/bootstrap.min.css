@@ -624,7 +624,8 @@ progress {
     flex-wrap: wrap;
     margin-top: calc(var(--bs-gutter-y) * -1);
     margin-right: calc(var(--bs-gutter-x) / -2);
-    margin-left: calc(var(--bs-gutter-x) / -2)
+    margin-left: calc(var(--bs-gutter-x) / -2);
+    color: #b3b3b3;
 }
 
 .row>* {
@@ -2085,7 +2086,7 @@ progress {
     font-weight: 400;
     line-height: 1.5;
     color: #6C7293;
-    background-color: #000;
+    background-color: #cfbbbb;
     background-clip: padding-box;
     border: 1px solid #000;
     appearance: none;
@@ -2125,7 +2126,7 @@ progress {
 }
 
 .form-control:disabled, .form-control:read-only {
-    background-color: #000;
+    background-color: #cfbbbb;
     opacity: 1
 }
 
