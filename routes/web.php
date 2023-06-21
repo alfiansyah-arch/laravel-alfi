@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; // untuk mendaftarkan user controler
 use App\Http\Controllers\PositionController; // untuk mendaftarkan position controler
 use App\Http\Controllers\DepartementController; // untuk mendaftarkan department controler
-use App\Http\Controllers\PetugasJumatController; // untuk mendaftarkan petugas jumat controler
+use App\Http\Controllers\PetugasJumatsController; // untuk mendaftarkan petugas jumat controler
+use App\Http\Controllers\TransaksiController; // untuk mendaftarkan transaksi controler
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +43,12 @@ Route::middleware('auth')->group(
     Route::get('departement/export-pdf', [DepartementController::class, 'exportPdf'])->name('exportPdfDepartement');
     Route::get('users/exportpdf', [UserController::class, 'exportPDF'])->name('exportpdf'); 
 
-    Route::get('register', [UserController::class, 'register2'])->name('register');
-    Route::post('register', [UserController::class, 'register_action2'])->name('register.action');
+    Route::resource('petugas_jumats', PetugasJumatsController::class);
 
-    Route::resource('petugasjumat', PetugasJumatController::class);
 
-    Route::get('search/masjid', [MasjidController::class, 'autocomplete'])->name('search.masjid');
+    Route::resource('transaksi', TransaksiController::class);
+    Route::get('/', [TransaksiController::class, 'chartLine'])->name('home');
+    Route::get('chart-line-ajax', [TransaksiController::class, 'chartLineAjax'])->name('transaksi.chartLineAjax');
+    Route::get('search/ptg', [PetugasJumatsController::class, 'autocomplete'])->name('search.ptg');
+    Route::resource('petugas', PetugasJumatsController::class);
 });

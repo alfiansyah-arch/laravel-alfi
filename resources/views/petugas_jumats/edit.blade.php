@@ -1,39 +1,36 @@
 @extends('app')
 @section('content')
-  <form action="{{ route('departements.store') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('petugas_jumats.update', $ptg->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                  <strong>Name:</strong>
-                  <input type="text" name="name" class="form-control" placeholder="Nama Lengkap">
-                  @error('name')
+                  <strong>Nama Petugas:</strong>
+                  <input type="text" name="nama_petugas" class="form-control" value="{{ $ptg->nama_petugas }}" placeholder="Nama Lengkap">
+                  @error('nama_petugas')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                   @enderror
               </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                  <strong>Location:</strong>
-                  <input type="text" name="location" class="form-control" placeholder="Lokasi Tinggal">
-                  @error('location')
+                  <strong>Tugas:</strong>
+                  <input type="text" name="tugas" class="form-control" value="{{ $ptg->tugas }}" placeholder="Harga Berapa">
+                  @error('tugas')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                   @enderror
               </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                  <strong>Manager ID:</strong>
-                  <select name="manager_id" class="form-control">
-                  @foreach ($managers as $manager)
-                    <option value="{{ $manager->id }}">{{$manager->name}}</option>
-                    @endforeach
-                  </select>
-                  @error('manager_id')
+                  <strong>Harga:</strong>
+                  <input type="text" name="price" class="form-control" value="{{ $ptg->price }}" placeholder="Harga Berapa">
+                  @error('price')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                   @enderror
               </div>
-          </div>
+</div>
           <button type="submit" class="btn btn-primary mt-3 ml-3">Submit</button>
       </div>
   </form>

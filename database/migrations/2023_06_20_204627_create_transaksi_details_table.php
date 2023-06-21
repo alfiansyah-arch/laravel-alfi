@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('masjids', function (Blueprint $table) {
+        Schema::create('transaksi_details', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_masjid');
-            $table->string('alamat')->nullable();
-            $table->date('tgl_berdiri')->nullable();
-            $table->string('kapasitas_jamaah')->nullable();
-            $table->string('no_telepon')->nullable();
-            $table->string('gambar');
+            $table->string('no_transaksi')->nullable();
+            $table->integer('kode_petugas')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('masjids');
+        Schema::dropIfExists('transaksi_details');
     }
 };

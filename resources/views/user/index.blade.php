@@ -23,7 +23,6 @@ use App\Models\Position;
       <th scope="col">Email</th>
       <th scope="col">Position</th>
       <th scope="col">Department</th>
-      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -45,14 +44,6 @@ use App\Models\Position;
   @endif
   </td>
   <td>{{ $val->department }}</td>
-      <td>
-        <form action="{{ route('departements.destroy',$val->id) }}" method="Post">
-          <a class="btn btn-primary" href="{{ route('departements.edit',$val->id) }}">Edit</a>
-          @csrf
-          @method('DELETE')
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
-      </td>
     </tr>
     @endforeach
   </tbody>

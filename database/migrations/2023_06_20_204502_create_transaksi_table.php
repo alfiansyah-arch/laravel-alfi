@@ -15,13 +15,12 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->string('no_transaksi');
-            $table->date('tgl_transaksi');
-            $table->string('nama_petugas');
-            $table->string('tugas');
-            $table->string('nama_masjid');
-            $table->string('alamat');
-            $table->string('total');
+            $table->string('no_transaksi')->nullable();
+            $table->date('tgl_transaksi')->nullable();
+            $table->integer('id_pemesan')->nullable();
+            $table->string('nama_masjid')->nullable();
+            $table->string('alamat')->nullable();
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
     }

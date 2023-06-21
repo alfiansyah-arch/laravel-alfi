@@ -68,7 +68,8 @@
                     <a class="nav-link" href="{{ route('positions.index') }}">Position</a>
                     <a class="nav-link" href="{{ route('departements.index') }}">Departments</a>
                     <a class="nav-link" href="{{ route('user.index') }}">User</a>
-                    <a class="nav-link" href="{{ route('petugasjumat.index') }}">Petugas Jumat</a>
+                    <a class="nav-link" href="{{ route('petugas_jumats.index') }}">Petugas</a>
+                    <a class="nav-link" href="{{ route('transaksi.index') }}">Pesan</a>
                     <!-- @if(auth()->user()->position==1)
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('login') }}">Login</a>

@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Masjid extends Model
+class Petugas_Jumat extends Model
 {
     use HasFactory;
+    protected $table = 'petugas_jumats';
     protected $fillable = [
-        'nama_masjid',
-        'alamat',
-        'tgl_berdiri',
-        'kapasitas_jamaah',
-        'no_telepon',
-        'gambar'
+        'nama_petugas',
+        'tugas',
+        'price',
     ];
 }

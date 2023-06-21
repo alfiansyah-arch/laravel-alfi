@@ -8,41 +8,30 @@
 </div>
 @endif
 <div class="text-end mb-2">
-  <a class="btn btn-info" href="">Print</a>
-  <a class="btn btn-success" href="{{ route('petugasjumat.create') }}">Tambah Petugas</a>
+  <a class="btn btn-success" href="{{ route('petugas_jumats.create') }}">Add Petugas</a>
 </div>
 
 <table id="example" class="table table-striped" style="width:100%">
         <thead>
     <tr>
       <th scope="col">No</th>
-      <th scope="col">Kode Petugas</th>
       <th scope="col">Nama Petugas</th>
-      <th scope="col">Tgl Lahir</th>
-      <th scope="col">Alamat</th>
-      <th scope="col">No.Telepon</th>
       <th scope="col">Tugas</th>
-      <th scope="col">Tgl Bertugas</th>
-      <th scope="col">Nama Masjid</th>
+      <th scope="col">Harga</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     @php $no = 1 @endphp
-    @foreach ($petugas as $val)
+    @foreach ($ptgs as $val)
     <tr>
       <td>{{ $no ++ }}</td>
-      <td>{{ $val->kode_petugas }}</td>
       <td>{{ $val->nama_petugas }}</td>
-      <td>{{ $val->tgl_lahir }}</td>
-      <td>{{ $val->alamat }}</td>
-      <td>{{ $val->no_telepon }}</td>
       <td>{{ $val->tugas }}</td>
-      <td>{{ $val->tgl_bertugas }}</td>
-      <td>{{ $val->nama_masjid }}</td>
+      <td>{{ $val->price }}</td>
       <td>
-        <form action="" method="Post">
-          <a class="btn btn-primary" href="">Edit</a>
+        <form action="{{ route('petugas_jumats.destroy',$val->id) }}" method="Post">
+          <a class="btn btn-primary" href="{{ route('petugas_jumats.edit',$val->id) }}">Edit</a>
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger">Delete</button>

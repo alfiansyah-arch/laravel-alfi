@@ -14,14 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('petugas_jumats', function (Blueprint $table) {
-            $table->string('kode_petugas')->primary();
+            $table->id();
             $table->string('nama_petugas')->nullable();
-            $table->date('tgl_lahir')->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('no_telepon')->nullable();
             $table->string('tugas')->nullable();
-            $table->date('tgl_bertugas');
-            $table->string('nama_masjid');
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }
